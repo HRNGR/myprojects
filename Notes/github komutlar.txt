@@ -1,0 +1,94 @@
+Kısayollar
+gg en başa gider
+d satır siler
+Çıkış;
+esc :x! kaydetmeden
+esc:vq!kaydederek
+esc:wq kaydederek
+esc:q! kaydetmeden
+ctrl+d
+
+----------
+
+----------
+EC2yu sürekli açık tutma
+
+extansiton yükle 
+
+view/cmmand palette
+remote-ssh configuration file
+
+c:USER\HRN\.shh\config
+
+"
+Host *
+    TCPKeepAlive yes
+    ServerAliveInterval 120
+
+Host linux
+    HostName 13.58.215.54
+IdentityFile C:\Users\HRN\Downloads\keyec2.pem
+    User ec2-userl
+"
+
+Sağ altta yeşil kısma bas "connect to host" ya da "connect to host with current window" a tıkla
+linux
+continue
+------------
+$*** değişken şeklinde algılıyor "..***..." tırnak içinde dahi başına ' $' / gelirse $ aktif olmuyor
+-----------
+sudo su (root a geçiyor)
+sudo su - (root a geçiyor ve HOME a geçiyor)
+su *** (*** user a geçiyor)
+su - *** (*** user a geçiyor ve HOME a geçiyor)
+------------
+useradd user1
+passwd user1
+Usermode user1
+------------
+Echo > text.txt "asdas"    yaz
+Echo >> text.txt "qwert"   yaz2.satıra yaz
+cat text.txt               oku
+rm text.txt                sil
+------------
+mkdir test && cd test (test klasörü oluştur ve konum olrak oraya geç)
+------------
+ls -al test.sh
+chmod +x test.sh
+------------
+cat test.sh (içini okur) => echo "hello world"
+./test/test.sh (çalıştırır) => hello world (konuma gelip)
+------------
+export CLARUSW=env.var
+echo $CLARUS => env.var
+------------
+sudo yum install httpd -y (Appacy yükleme)
+------------
+rrm -rf * (nevarneyok sil)
+------------
+ grep:
+-veşleşmeyenler
+-ceşleşen satır sayısı
+-neşleşen satır ve satır numarası
+-ibüyük küçük harf eşleşenler
+-d "-" olan
+tr 'a' 'b' A yerine b yaz
+------------
+
+scp -i FirstKey.pem ec2-user@ec2-54-221-20-193:/home/ec2-use/git.text ./git.txt
+
+scp -i temelcikey.pem -r ./CourseProjects ec2-user@3.88.161.15:/home/ec2-user/
+scp -i temelcikey.pem -r ec2-user@3.88.161.15:/home/ec2-user ./
+
+
+------------
+Renklendirmek için
+.bashrc dosyasına sonsatıra aşağıdakini ekle (Komuta da yazarsak oluyor ama geçici)
+export PS1="\e[3;33m[\u@\h \W]$ \e[0m"
+
+export PS1="\[\e[32m\][\[\e[m\]\[\e[31m\]\u\[\e[m\]\[\e[33m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\]:\[\e[36m\]\w\[\e[m\]\[\e[32m\]]\[\e[m\]\[\e[32;47m\]\\$\[\e[m\] "
+
+ubuntu;
+export PS1="\[\e[32m\][\[\e[m\]\[\e[31m\]\u\[\e[m\]\[\e[33m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\]:\[\e[36m\]\w\[\e[m\]\[\e[32m\]]\[\e[m\]\[\e[32;47m\]\\$\[\e[m\] "
+
+------------
