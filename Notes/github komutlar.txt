@@ -7,9 +7,16 @@ esc:vq!kaydederek
 esc:wq kaydederek
 esc:q! kaydetmeden
 ctrl+d
-
+-----------
+sudo su (root a geçiyor)
+sudo su - (root a geçiyor ve HOME a geçiyor)
+su *** (*** user a geçiyor)
+su - *** (*** user a geçiyor ve HOME a geçiyor)
 ----------
-
+HRN@DESKTOP-7K8096H MINGW64 ~/Downloads
+$ scp -i firstkey.pem "ec2-user@54.161.246.232:/home/ec2-user/cs.sh"  ./
+HRN@DESKTOP-7K8096H MINGW64 ~/Downloads
+$ scp -i firstkey.pem "./aa.sh" "ec2-user@54.161.246.232:/home/ec2-user/"
 ----------
 EC2yu sürekli açık tutma
 
@@ -36,11 +43,7 @@ linux
 continue
 ------------
 $*** değişken şeklinde algılıyor "..***..." tırnak içinde dahi başına ' $' / gelirse $ aktif olmuyor
------------
-sudo su (root a geçiyor)
-sudo su - (root a geçiyor ve HOME a geçiyor)
-su *** (*** user a geçiyor)
-su - *** (*** user a geçiyor ve HOME a geçiyor)
+
 ------------
 useradd user1
 passwd user1
