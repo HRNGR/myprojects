@@ -1,0 +1,9 @@
+sudo pip3 install flask
+
+sudo pip3 install flask-mysql
+
+sudo pip3 install sqlalchemy
+
+sudo pip3 install Flask-SQLAlchemy
+
+hata alırsan "sudo" kullanma...!!!
