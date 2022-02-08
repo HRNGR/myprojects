@@ -6,4 +6,21 @@ sudo pip3 install sqlalchemy
 
 sudo pip3 install Flask-SQLAlchemy
 
-hata alırsan "sudo" kullanma...!!!
+sudo yum install git
+
+sudo git clone https://github.com/HRNGR/myprojects.git
+
+sudo yum update -y
+
+sudo python3 app-with-sqlite.py
+
+
+-------------
+ec2 dan bağlanırken son satır
+
+app.run(debug=True) yerine     app.run("0.0.0.0", port=80)
+---------------------
+INSERT INTO user (username, email)
+values ('harun', 'gurharun@gmail.com')
+
+Select * from clarusway.users
