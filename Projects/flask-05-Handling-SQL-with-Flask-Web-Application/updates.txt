@@ -20,7 +20,7 @@ ec2 dan bağlanırken son satır
 
 app.run(debug=True) yerine     app.run("0.0.0.0", port=80)
 ---------------------
-INSERT INTO user (username, email)
+insert into user (username, email)
 values ('harun', 'gurharun@gmail.com')
 
 Select * from clarusway.users
