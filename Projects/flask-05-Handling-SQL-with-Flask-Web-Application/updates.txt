@@ -6,7 +6,7 @@ sudo pip3 install sqlalchemy
 
 sudo pip3 install Flask-SQLAlchemy
 
-sudo yum install git
+sudo yum install git -y
 
 sudo git clone https://github.com/HRNGR/myprojects.git
 
