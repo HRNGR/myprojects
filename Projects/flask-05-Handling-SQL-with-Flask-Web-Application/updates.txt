@@ -12,8 +12,11 @@ sudo git clone https://github.com/HRNGR/myprojects.git
 
 sudo yum update -y
 
-sudo python3 app-with-sqlite.py
 
+----------
+sudo rm -rf email.db
+
+sudo python3 app-with-sqlite.py
 
 -------------
 ec2 dan bağlanırken son satır
