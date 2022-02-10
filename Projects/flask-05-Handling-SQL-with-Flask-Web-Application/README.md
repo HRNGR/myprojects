@@ -22,7 +22,7 @@ At the end of the this hands-on training, students will be able to;
 
 - use git repo to manage the application versioning.
 
-- run the web application on AWS EC2 instance using the GitHub repo as codebase.
+- run the web application on AWS EC2 instance using the GitHub repo as codebase...
 
 
 ## Outline
