@@ -46,7 +46,6 @@ Part 6 - Mount EC2B and additional volume (15 GiB)
     Step 6: Configure Security Group; Type: SHH Port: 22
     Step 7: Creat
 
-
 ## Part 2 - Mounting the additional volume
 
   - Connect EC2A via ssh from terminal.

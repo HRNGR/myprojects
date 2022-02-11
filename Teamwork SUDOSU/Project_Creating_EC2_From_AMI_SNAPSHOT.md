@@ -111,8 +111,3 @@ cd /mnt/nightfighter
 
 
 ## Part 7 - Attach and Mount EC2B and additional volume (15 GiB)
-
-
-
-
-
