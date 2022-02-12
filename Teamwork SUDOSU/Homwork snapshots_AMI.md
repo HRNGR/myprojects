@@ -55,7 +55,7 @@ Part 6 - Using Data Lifecycle Manager
   systemctl enable nginx
   ```
 
-  c. Tag: Since "Data Lifecycle Manager" work based on tags, we use tag to customize Instance!!!!!!!! 
+  c. Tag: Since "Data Lifecycle Manager" work based on tags, we use tag to customize Instance!!!!!!!!
 
   ```text
   Key: Name 
