@@ -6,13 +6,17 @@
 
 # Make sure the script is being executed with superuser privileges.
 
-
 # Get the username (login).
-read -p "Enter Your User Name: " username
+
+read -p "Enter your username: " username
 
 # Get the real name (contents for the description field).
 
+read -p "Enter your real name: " comment
+
 # Get the password.
+
+read -p "Def"
 
 # Create the account.
 
