@@ -1,0 +1,16 @@
+serdar TerminateInstances ""resourceName"":""i-0849c4ba801e1386a""}
+serdar TerminateInstances ""resourceName"":""i-0ef67c3aebadf49f6""}]"
+serdar TerminateInstances ""resourceName"":""i-0a4521808ab8da6dd""}
+serdar TerminateInstances ""resourceName"":""i-0a4521808ab8da6dd""}
+serdar TerminateInstances ""resourceName"":""i-0a4521808ab8da6dd""}
+serdar TerminateInstances ""resourceName"":""i-0c127ab5cdf997cf4""}
+serdar TerminateInstances ""resourceName"":""i-0d8781df28b3bfce7""}
+serdar TerminateInstances ""resourceName"":""i-0d8781df28b3bfce7""}
+serdar TerminateInstances ""resourceName"":""i-0d8781df28b3bfce7""}
+serdar TerminateInstances ""resourceName"":""i-02cc96085d703ea3c""}]"
+serdar TerminateInstances ""resourceName"":""i-0f0a93e45a379660c""}]"
+serdar TerminateInstances ""resourceName"":""i-09ffc51dd8feb0cc0""}]"
+serdar TerminateInstances ""resourceName"":""i-00daa7084fb9a3184""}]"
+serdar TerminateInstances ""resourceName"":""i-0bb9d6d4d6123c841""}]"
+serdar TerminateInstances ""resourceName"":""i-00720a072f34cc926""}
+serdar TerminateInstances ""resourceName"":""i-0270f35ff88b1a463""}]"
