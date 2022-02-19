@@ -90,16 +90,16 @@ Resources:
         KeyName: !Ref myKP
         SecurityGroupIds:
           - !GetAtt mySG.GroupId
-      UserData: !Base64 |
-        #! /bin/bash
-        yum update -y
-        pip3 install flask
-        wget https://raw.githubusercontent.com/Comp-Wolf/my-projects/main/aws/Project-001-Roman-Numerals-Converter/app.py
-        mkdir templates && cd templates
-        wget https://raw.githubusercontent.com/Comp-Wolf/my-projects/main/aws/Project-001-Roman-Numerals-Converter/templates/index.html
-        wget https://raw.githubusercontent.com/Comp-Wolf/my-projects/main/aws/Project-001-Roman-Numerals-Converter/templates/result.html
-        cd..
-        python3 app.py
+        UserData: !Base64 |
+          #! /bin/bash
+          yum update -y
+          pip3 install flask
+          wget https://raw.githubusercontent.com/Comp-Wolf/my-projects/main/aws/Project-001-Roman-Numerals-Converter/app.py
+          mkdir templates && cd templates
+          wget https://raw.githubusercontent.com/Comp-Wolf/my-projects/main/aws/Project-001-Roman-Numerals-Converter/templates/index.html
+          wget https://raw.githubusercontent.com/Comp-Wolf/my-projects/main/aws/Project-001-Roman-Numerals-Converter/templates/result.html
+          cd..
+          python3 app.py
 
     myTG:
     Type: AWS::ElasticLoadBalancingV2::TargetGroup
