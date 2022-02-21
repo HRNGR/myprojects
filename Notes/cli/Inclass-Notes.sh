@@ -29,6 +29,10 @@ unzip awscliv2.zip  #install "unzip" if not installed
 sudo ./aws/install
 sudo yum install awscli -y
 
+###Jump p.g.168
+
+
+
 
 # Configuration
 
