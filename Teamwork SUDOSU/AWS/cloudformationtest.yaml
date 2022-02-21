@@ -55,7 +55,7 @@ myListenner:
   Properties:
      DefaultActions: # Required
       - Type: forward
-      - TargetGroupARN
+        TargetGroupARN
     LoadBalancerArn: !Ref myALB # Required
     Port: 80
     Protocol: HTTP
