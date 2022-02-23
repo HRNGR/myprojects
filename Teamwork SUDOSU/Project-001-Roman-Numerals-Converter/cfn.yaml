@@ -20,17 +20,16 @@ Resources:
         - Key: Name
           Value: !Sub Web Server of ${AWS::StackName}
       UserData: !Base64 |
-        #! /bin/bash
-        yum update -y
-        pip3 install flask
-        mkdir roman-project && cd roman-project
-        wget https://raw.githubusercontent.com/MuratYarali/my-projects/main/aws/projects/Project-001-Roman-Numerals-Converter/app.py
-        mkdir templates && cd templates
-        wget https://raw.githubusercontent.com/MuratYarali/my-projects/main/aws/projects/Project-001-Roman-Numerals-Converter/templates/index.html
-        wget https://raw.githubusercontent.com/MuratYarali/my-projects/main/aws/projects/Project-001-Roman-Numerals-Converter/templates/result.html
-        cd ..
-        python3 app.py
-
+#! /bin/bash
+yum update -y
+pip3 install flask
+mkdir roman-project && cd roman-project
+wget https://raw.githubusercontent.com/MuratYarali/my-projects/main/aws/projects/Project-001-Roman-Numerals-Converter/app.py
+mkdir templates && cd templates
+wget https://raw.githubusercontent.com/MuratYarali/my-projects/main/aws/projects/Project-001-Roman-Numerals-Converter/templates/index.html
+wget https://raw.githubusercontent.com/MuratYarali/my-projects/main/aws/projects/Project-001-Roman-Numerals-Converter/templates/result.html
+cd ..
+python3 app.py
 
   RomanNumSecGroup:
     Type: AWS::EC2::SecurityGroup
@@ -45,7 +44,6 @@ Resources:
           FromPort: 80
           ToPort: 80
           CidrIp: 0.0.0.0/0
-
 
 Outputs:
   AppURL:
