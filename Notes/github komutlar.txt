@@ -1,6 +1,8 @@
 Kısayollar
 gg en başa gider
 d satır siler
+d15 15 satır birden siler
+i // o insert ve ensona gelir
 Çıkış;
 esc :x! kaydetmeden
 esc:vq!kaydederek
@@ -12,6 +14,7 @@ sudo su (root a geçiyor)
 sudo su - (root a geçiyor ve HOME a geçiyor)
 su *** (*** user a geçiyor)
 su - *** (*** user a geçiyor ve HOME a geçiyor)
+sudo hostnamectl set-hostname First
 ----------
 HRN@DESKTOP-7K8096H MINGW64 ~/Downloads
 $ scp -i firstkey.pem "ec2-user@54.161.246.232:/home/ec2-user/cs.sh"  ./
@@ -67,7 +70,10 @@ echo $CLARUS => env.var
 ------------
 sudo yum install httpd -y (Appacy yükleme)
 ------------
-rrm -rf * (nevarneyok sil)
+rm -rf * (nevarneyok sil)
+rm data/* (nevarneyok sil)
+
+grep -Eo "i-[a-Z 0-9]{17}"
 ------------
  grep:
 -veşleşmeyenler
