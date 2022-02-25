@@ -50,7 +50,6 @@ def find_persons(keyword):
         persons = [{'name':'No Result', 'number':'No Result'}] 
     return persons
 
-
 # Write a function named `insert_person` which inserts person into the phonebook table in the db,
 # and returns text info about result of the operation
 
@@ -174,6 +173,7 @@ def delete_record():
         return render_template('delete.html', show_result=True, result_html=result_app, not_valid=False, developer_name='Serdar') 
     else:
         return render_template('delete.html', show_result=False, not_valid=False, developer_name='Serdar')
+
 
 
 # Add a statement to run the Flask application which can be reached from any host on port 80.
