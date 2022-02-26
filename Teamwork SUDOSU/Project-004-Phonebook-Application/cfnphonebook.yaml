@@ -1,0 +1,56 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: |
+  
+Parameters:
+  myparamVPCID:
+    Description: Select you VPC
+    Type: AWS::EC2::VPC::Id
+    Default: 
+
+Resources:
+
+myTargetGroup:
+  Type: AWS::ElasticLoadBalancingV2::TargetGroup
+  Properties:
+    HealthCheckIntervalSeconds: 10
+    HealthCheckTimeoutSeconds: 5
+    HealthyThresholdCount: 3
+    Port: 80
+    Protocol: http
+    UnhealthyThresholdCount: 2
+      VpcId: !Ref myparamVPC
+
+  RDSSecGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable just EC2 # Required
+      SecurityGroupIngress:
+        IpProtocol: tcp
+        FromPort: 3306
+        ToPort: 3306
+        SourceSecurityGroupId: !GetAtt EC2SecGroup.GroupId
+      VpcId: !Ref myparamVPC
+
+  EC2SecGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable just ALBSecGroup # Required
+      SecurityGroupIngress:
+        IpProtocol: tcp
+        FromPort: 80
+        ToPort: 80
+        SourceSecurityGroupId: !GetAtt AlbSecGroup.GroupId
+      VpcId: !Ref myparamVPC
+
+  ALBSecGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable HTTP # Required
+      SecurityGroupIngress:
+        IpProtocol: tcp
+        FromPort: 80
+        ToPort: 80
+        CidrIp: 0.0.0.0/0
+      VpcId: !Ref myparamVPC
+  
+Outputs:
