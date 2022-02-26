@@ -1,55 +1,124 @@
 AWSTemplateFormatVersion: 2010-09-09
 Description: |
-  The Roman Numerals Converter Application aims to convert the given number to the Roman numerals. The application is to be coded in Python and deployed as a web application with Flask on AWS Elastic Compute Cloud (EC2) Instance using AWS Cloudformation and CLI Services.
-
+  
 Parameters:
-  paramKP:
-    Description: Select Your Key
+  myVPC:
+    Description: Select your VPC
+    Type: AWS::EC2::VPC::Id
+
+  mySubnets:
+    Description: Select at least 2 subnets
+    Type: List<AWS::EC2::Subnet::Id>
+
+  myKP:
+    Description: Select your Key
     Type: AWS::EC2::KeyPair::KeyName
 
-Resources:
-  myIns:
-    Type: AWS::EC2::Instance
-    Properties:
-      KeyName: !Ref paramKP
-      ImageId: ami-033b95fb8079dc481
-      InstanceType: t2.micro
-      SecurityGroupIds:
-        - !Ref mySG
-      UserData: !Base64 |
-        #!/bin/bash -ex
-        yum update -y
-        yum install python3 -y
-        pip3 install flask
-        cd /home/ec2-user
-        mkdir roman-project && cd roman-project
-        wget https://raw.githubusercontent.com/HRNGR/myclarusway/main/aws/projects/Project-001-Roman-Numerals-Converter/app.py
-        mkdir templates && cd templates
-        wget https://raw.githubusercontent.com/HRNGR/myclarusway/main/aws/projects/Project-001-Roman-Numerals-Converter/templates/index.html
-        wget https://raw.githubusercontent.com/HRNGR/myclarusway/main/aws/projects/Project-001-Roman-Numerals-Converter/templates/result.html
-        cd ..
-        python3 app.py
-      Tags:
-        - Key: Name
-          Value: !Sub Web Server Of ${AWS::StackName}
+  myIT:
+    Description: Select instance type
+    Type: String
+    Default: t2.micro 
+    AllowedValues: 
+     - t2.micro
+     - t3.micro
+     - t2.nano
+     - t3.nano
+  
+Mappings:
+  RegionImageMap:
+    us-east-1:
+      AMI: ami-0dc2d3e4c0f9ebd18
+    us-east-2:
+      AMI: ami-0233c2d874b811deb
+    us-west-1:
+      AMI: ami-0ed05376b59b90e46
+    us-west-2:
+      AMI: ami-0dc8f589abe99f538
+    eu-west-1:
+      AMI: ami-058b1b7fe545997ae
 
-  mySG:
+  
+Resources:
+  myASG;
+  
+
+
+    myLT:
+    Type: AWS::EC2::LaunchTemplate
+    Properties:
+      LaunchTemplateData:
+        ImageId: !FindInMap 
+         - RegionImageMap
+         - !Ref AWS::Region
+         - AMI
+        InstanceType: !Ref myIT
+        KeyName: !Ref myKP
+        SecurityGroupIds:
+          - !GetAtt EC2SecGroup.GroupId
+        UserData: !Base64 |
+          #! /bin/bash
+          yum update -y
+          yum install python3 -y
+          pip3 install flask
+          pip3 install flask-mysql
+          pip3 install sqlalchemy
+          pip3 install Flask-SQLAlchemy
+          cd /home/ec2-user
+          curl https://raw.githubusercontent.com/HRNGR/myprojects/main/Projects/Project-004-Phonebook-Application/phonebook-app.py
+          mkdir templates && cd templates
+??        curl https://raw.githubusercontent.com/HRNGR/myprojects/main/Projects/Project-004-Phonebook-Application/templates/add-update.html
+??        curl https://raw.githubusercontent.com/HRNGR/myprojects/main/Projects/Project-004-Phonebook-Application/templates/delete.html
+??        curl https://raw.githubusercontent.com/HRNGR/myprojects/main/Projects/Project-004-Phonebook-Application/templates/index.html -o index.html
+          cd ..
+          python3 phonebook-app.py
+
+  myTG:
+    Type: AWS::ElasticLoadBalancingV2::TargetGroup
+    Properties:
+      HealthCheckIntervalSeconds: 10
+      HealthCheckTimeoutSeconds: 5
+      HealthyThresholdCount: 3
+      Port: 80
+      Protocol: HTTP
+      UnhealthyThresholdCount: 2
+      VpcId: !Ref myVPC
+
+  RDSSecGroup:
+  Type: AWS::EC2::SecurityGroup
+  Properties:
+    GroupDescription: Enable just EC2SecGroup # Required
+    SecurityGroupIngress:
+      - IpProtocol: tcp
+        FromPort: 3306
+        ToPort: 3306
+        SourceSecurityGroupId: !GetAtt EC2SecGroup.GroupId
+    VpcId: !Ref myVPC
+
+  EC2SecGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupDescription: Enable SSH and HTTP # Required
+      GroupDescription: Enable just ALBSecGroup # Required
       SecurityGroupIngress:
-        IpProtocol: tcp
-        FromPort: 22
-        ToPort: 22
-        CidrIp: 0.0.0.0/0
-        IpProtocol: tcp
-        FromPort: 80
-        ToPort: 80
-        CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          SourceSecurityGroupId: !GetAtt ALBSecGroup.GroupId
+      VpcId: !Ref myVPC
 
+  ALBSecGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enables HTTP # Required
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+      VpcId: !Ref myVPC
+
+
+
+
+
+  
 Outputs:
-  WebsiteURL:
-    Value: !Sub
-      - http://${PublicAddress}
-      - PublicAddress: !GetAtt WebServerHost.PublicDnsName
-    Description: Roman Numerals Converter Application URL

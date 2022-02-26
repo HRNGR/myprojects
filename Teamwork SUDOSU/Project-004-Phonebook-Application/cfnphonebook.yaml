@@ -9,6 +9,43 @@ Parameters:
 
 Resources:
 
+LogicalID:
+  Type: AWS::EC2::LaunchTemplate
+  Properties:
+    LaunchTemplateData:
+      BlockDeviceMappings:
+        -
+      DisableApiTermination: false
+      EbsOptimized: false
+      ElasticGpuSpecifications:
+        -
+      ElasticInferenceAccelerators:
+        -
+      ImageId: "String"
+      InstanceInitiatedShutdownBehavior: "String"
+      InstanceType: "String"
+      KernelId: "String"
+      KeyName: "String"
+      LicenseSpecifications:
+        -
+      NetworkInterfaces:
+        -
+      RamDiskId: "String"
+      SecurityGroupIds:
+        -
+      SecurityGroups:
+        -
+      TagSpecifications:
+        -
+      UserData: "String"
+    LaunchTemplateName: "String"
+    TagSpecifications:
+      TagSpecifications
+
+
+
+
+
 myTargetGroup:
   Type: AWS::ElasticLoadBalancingV2::TargetGroup
   Properties:
