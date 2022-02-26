@@ -9,6 +9,8 @@ Parameters:
 
 Resources:
 
+
+
 LogicalID:
   Type: AWS::EC2::LaunchTemplate
   Properties:
@@ -44,7 +46,23 @@ LogicalID:
 
 
 
-
+rdsDBSecurityGroup:
+  Type: AWS::RDS::DBSecurityGroup
+  Properties:
+    EC2VpcId: 
+    GroupDescription: 
+    DBSecurityGroupIngress:
+      - 
+        CIDRIP: --.--.--.--/--
+        DBSecurityGroupName: 
+        EC2SecurityGroupId: 
+        EC2SecurityGroupName: 
+        EC2SecurityGroupOwnerId: 
+      - 
+         RDS Security Group Rule
+  Tags:
+    - Key: keyname
+      Value: value
 
 myTargetGroup:
   Type: AWS::ElasticLoadBalancingV2::TargetGroup
