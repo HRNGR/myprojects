@@ -39,7 +39,7 @@ Mappings:
 
   
 Resources:
-
+  myASG;
 
 
 
@@ -68,9 +68,9 @@ Resources:
           cd /home/ec2-user
           curl https://raw.githubusercontent.com/HRNGR/myprojects/main/Projects/Project-004-Phonebook-Application/phonebook-app.py
           mkdir templates && cd templates
-??        curl https://raw.githubusercontent.com/HRNGR/myprojects/main/Projects/Project-004-Phonebook-Application/templates/add-update.html
-??        curl https://raw.githubusercontent.com/HRNGR/myprojects/main/Projects/Project-004-Phonebook-Application/templates/delete.html
-??        curl https://raw.githubusercontent.com/HRNGR/myprojects/main/Projects/Project-004-Phonebook-Application/templates/index.html -o index.html
+          curl https://raw.githubusercontent.com/HRNGR/myprojects/main/Projects/Project-004-Phonebook-Application/templates/add-update.html
+          curl https://raw.githubusercontent.com/HRNGR/myprojects/main/Projects/Project-004-Phonebook-Application/templates/delete.html
+          curl https://raw.githubusercontent.com/HRNGR/myprojects/main/Projects/Project-004-Phonebook-Application/templates/index.html -o index.html
           cd ..
           python3 phonebook-app.py
 
