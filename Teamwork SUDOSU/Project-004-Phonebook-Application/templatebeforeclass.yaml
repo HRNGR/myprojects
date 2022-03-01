@@ -1,0 +1,153 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: |
+The Phonebook Application aims to create a phonebook application in Python and deployed as a web application with Flask on AWS Application Load Balancer with Auto Scaling Group of Elastic Compute Cloud (EC2) Instances and Relational Database Service (RDS) using AWS Cloudformation Service.
+  
+Parameters:
+  paramVPC:
+    Description: 
+    Type: AWS::EC2::VPC::Id
+    Default: 
+
+  paraSubnet:
+    Description: Select Your VPC
+    Type: List<AWS::EC2::Subnet::Id>
+
+  paramIT:
+    Description: Select Instance Type
+    Type: AWS::EC2::Instance::Id
+    Default: t2.micro
+    AllowedValues:
+    - t2.micro
+    - t3.micro
+
+  paramKey:
+    Description: Select Your Key
+    Type: AWS::EC2::KeyPair::KeyName
+
+Mappings:
+  RegionImageMap:
+  us-east-1:
+    AMI: ami-0dc2d3e4c0f9ebd18
+  us-east-2:
+    AMI: ami-0233c2d874b811deb
+  us-west-1:
+    AMI: ami-0ed05376b59b90e46
+  us-west-2:
+    AMI: ami-0dc8f589abe99f538
+  eu-west-1:
+    AMI: ami-058b1b7fe545997ae
+  
+Resources:
+
+  #ALB Securty Group
+  LoadBalancerSecGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable HTTP ALB
+      VpcId: !Ref paramVPC
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+      Tags:
+        - Key: Name
+          Value: SecGrpALB
+
+  securityGroupEC2s:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable HTTP and SSH # Required
+      SecurityGroupIngress:
+       - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+       - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          SourceSecurityGroupId: !GetAtt loadBalancerSecGrp.GroupId
+      Tags:
+        - Key: Name
+          Value: SecGroupEC2
+      VpcId: !Ref paramVPC
+
+  secGroupName:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable Mysql port for EC2 # Required
+      VpcId: !Ref paramVPC
+      SecurityGroupEgress:
+       - IpProtocol: tcp
+          FromPort: 3306
+          ToPort: 3306
+          securitygroupID: !GetAtt securityGroupEC2s.GroupID
+      Tags:
+        - Key: Name
+          Value: SecGrpRDS
+
+  ELBTargetGroup:
+    Type: AWS::ElasticLoadBalancingV2::TargetGroup
+    Properties:
+      HealthCheckIntervalSeconds: 10
+      HealthCheckTimeoutSeconds: 5
+      HealthyThresholdCount: 3
+      Port: 80
+      Protocol: HTTP
+      UnhealthyThresholdCount: 2
+      VpcId: !Ref paramVPC
+
+  LB:
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties:
+      SecurityGroups: 
+        - !GetAtt LoadBalancerSecGroup.GroupID
+      Subnets: !GetAtt paraSubnet
+      Type: application
+
+  launchTemplate:
+    Type: AWS::EC2::LaunchTemplate
+    Properties:
+        ImageId: !GetAtt RegionImageMap.AMI
+        InstanceType: !GetAtt paramIT
+        KeyName: !GetAtt paramKey
+        SecurityGroups:
+          -
+        UserData: "String"
+      LaunchTemplateName: "String"
+
+  rdsDBInstance:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      AllocatedStorage: 20
+      DBInstanceClass: db.t2.micro
+      DBInstanceIdentifier: 
+      DBName: !Ref 
+      DBParameterGroupName: 
+      DBSecurityGroups: 
+        - db-sg-group
+      DBSnapshotIdentifier: 
+      DBSubnetGroupName: 
+      Engine: mysql|oracle
+      EngineVersion: 
+      Iops: 
+      KmsKeyId: 
+      LicenseModel: 
+      MasterUsername: 
+      MasterUserPassword: 
+      MultiAZ: true|false
+      OptionGroupName: 
+      Port: 
+      PreferredBackupWindow: 
+      PreferredMaintenanceWindow: 
+      PubliclyAccessible: true|false
+      SourceDBInstanceIdentifier: 
+      StorageEncrypted: true|false
+      StorageType: 
+      VPCSecurityGroups:
+        - vpc-sg-id
+      Tags:
+        - Key: keyname
+          Value: value
+  
+Outputs:

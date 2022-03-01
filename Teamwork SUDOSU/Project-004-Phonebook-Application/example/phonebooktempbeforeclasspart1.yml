@@ -1,0 +1,86 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: |
+  The Phonebook Application aims to create a phonebook application in Python and deployed as a web application with Flask on AWS Application Load Balancer with Auto Scaling Group of Elastic Compute Cloud (EC2) Instances and Relational Database Service (RDS) using AWS Cloudformation Service.
+
+Parameters:
+  paramVPC:
+    Description: Select your vpc
+    Type: AWS::EC2::VPC::Id
+
+  paramSubnet:
+    Description: Select at least 2 subnet
+    Type: List<AWS::EC2::Subnet::Id>
+  
+Mappings:
+
+ 
+
+Resources:
+
+  # alb security group
+  loadBalancerSecGrp:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable http for ALB # Required
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+      VpcId: !Ref paramVPC
+      Tags:
+        - Key: Name
+          Value: SecGrpALB
+      
+  
+  securityGrpEC2s:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable HTTP and SSH # Required
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          SourceSecurityGroupId: !GetAtt loadBalancerSecGrp.GroupId
+      Tags:
+        - Key: Name
+          Value: secGrpEC2
+      VpcId: !Ref paramVPC
+
+  securityGrpRDS:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable Mysql port for ec2 # Required
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 3306
+          ToPort: 3306
+          SourceSecurityGroupId: !GetAtt securityGrpEC2s.GroupId
+      Tags:
+        - Key: Name
+          Value: secGrpRDS
+      VpcId: !Ref paramVPC
+
+  ELBTargetGrp:
+    Type: AWS::ElasticLoadBalancingV2::TargetGroup
+    Properties:
+      HealthCheckIntervalSeconds: 10
+      HealthCheckTimeoutSeconds: 5
+      HealthyThresholdCount: 3
+      Port: 80
+      Protocol: HTTP
+      UnhealthyThresholdCount: 2
+      VpcId: !Ref paramVPC
+
+  loadaBalancer:
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties:
+      SecurityGroups:
+        - !GetAtt loadBalancerSecGrp.GroupId
+      Subnets: !GetAtt paramSubnet
+      Type: application
+Outputs:

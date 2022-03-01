@@ -96,7 +96,6 @@ Resources:
       Port: 80
       Protocol: HTTP
 
-
   myLT:
     Type: AWS::EC2::LaunchTemplate
     Properties:
