@@ -48,7 +48,7 @@ Mappings:
       AMI: ami-0dc8f589abe99f538
     eu-west-1:
       AMI: ami-058b1b7fe545997ae
- 
+
 Resources:
   # alb security group
   loadBalancerSecGrp:
@@ -64,8 +64,7 @@ Resources:
       Tags:
         - Key: Name
           Value: SecGrpALB
-      
-  
+
   securityGrpEC2s:
     Type: AWS::EC2::SecurityGroup
     Properties:
