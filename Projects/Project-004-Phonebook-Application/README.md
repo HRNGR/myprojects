@@ -76,7 +76,7 @@ thousand                         Warning -> 'Invalid input: Phone number should 
 
   - The Auto Scaling Group should use a Launch Template in order to launch instances needed and should be configured to;
 
-    - use all Availability Zones. 
+    - use all Availability Zones.
 
     - set desired capacity of instances to `2`
 
@@ -121,7 +121,6 @@ thousand                         Warning -> 'Invalid input: Phone number should 
         |----add-update.html # Given to the students (HTML template)
         |----delete.html     # Given to the students (HTML template)
 ```
-
 
 ## Expected Outcome
 
@@ -195,6 +194,7 @@ thousand                         Warning -> 'Invalid input: Phone number should 
 - Use given app and html templates to warn user with invalid inputs.
 
 - Customize the application by hard-coding your name for the `developer_name` variable within html templates.
+
 
 ## Resources
 
