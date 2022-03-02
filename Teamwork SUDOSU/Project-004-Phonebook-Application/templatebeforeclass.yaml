@@ -8,7 +8,7 @@ Parameters:
     Type: AWS::EC2::VPC::Id
     Default: 
 
-  paraSubnet:
+  paramSubnet:
     Description: Select Your VPC
     Type: List<AWS::EC2::Subnet::Id>
 
@@ -102,7 +102,7 @@ Resources:
     Properties:
       SecurityGroups: 
         - !GetAtt LoadBalancerSecGroup.GroupID
-      Subnets: !GetAtt paraSubnet
+      Subnets: !GetAtt paramSubnet
       Type: application
 
   launchTemplate:
