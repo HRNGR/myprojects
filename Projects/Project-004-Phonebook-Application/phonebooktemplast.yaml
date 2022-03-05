@@ -49,8 +49,8 @@ Resources:
           CidrIp: 0.0.0.0/0
 
         - IpProtocol: tcp
-          FromPort: 80
-          ToPort: 80 
+          FromPort: 22 80
+          ToPort: 22 80 
           SourceSecurityGroupId: !GetAtt ALBSecurityGroup.GroupId
 
   WebServerLT:
