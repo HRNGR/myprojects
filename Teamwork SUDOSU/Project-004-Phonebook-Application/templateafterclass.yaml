@@ -106,6 +106,7 @@ Resources:
       Port: 80
       Protocol: HTTP
 
+
   WebServerASG:
     Type: AWS::AutoScaling::AutoScalingGroup
     Properties:
