@@ -105,7 +105,6 @@ Select "Image_for_EC2B"
     Step 6: Configure Security Group; Type: SHH Port: 22
     Click "launch"
 
-
 ## Part 5 - Create an new volume (15 GiB) from additional volume's snapshop of EC2A
 
 Go to "Elastic Block Store" on left hand menu
@@ -125,12 +124,11 @@ Select "new_add_vol"
 
     Click "Attach volume"
 
-
 ## Part 6 - Mount EC2B and additional volume (15 GiB)
 
   - Connect EC2B via ssh from terminal
   (Note: Don't forget change username from root to ec2-user eg.;
-  ssh -i "firstkey.pem" `root`@ec2-44-200-218-109.compute-1.amazonaws.com) (wrong format)
+  ssh -i "FirstKey.pem" `root`@ec2-44-200-218-109.compute-1.amazonaws.com) (wrong format)
   ssh -i "firstkey.pem" `ec2-user`@ec2-44-200-218-109.compute-1.amazonaws.com) (correct format)
 
 # check volumes which volumes attached to instance. 

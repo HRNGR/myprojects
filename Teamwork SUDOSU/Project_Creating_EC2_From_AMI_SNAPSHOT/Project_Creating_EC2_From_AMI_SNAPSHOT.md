@@ -98,12 +98,13 @@ Select "AdditionalVolumeSnapshot" Creat Volume
 ## Part 5 - Create an instance (EC2B) from root volume's snapshop of EC2A
 
 Connect to EC2B with SSH But use "ec2-user" instead of "root"
-$ ssh -i "FirstKey.pem" root@ec2-3-94-86-243.compute-1.amazonaws.com
-$ ssh -i "FirstKey.pem" ec2-user@ec2-3-94-86-243.compute-1.amazonaws.com
+$ ssh -i "firstkey.pem" root@ec2-3-94-86-243.compute-1.amazonaws.com
+$ ssh -i "firstkey.pem" ec2-user@ec2-3-94-86-243.compute-1.amazonaws.com
 
 lsblk
 
-cd /mnt/nightfighter 
+cd /mnt/nightfighter
+## nightfighter klasörüne girer
 
 
 ## Part 6 - Create an additional volume (15 GiB) from additional volume's snapshop of EC2A
