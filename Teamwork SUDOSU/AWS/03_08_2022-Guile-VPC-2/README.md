@@ -70,6 +70,23 @@ ssh-add ./[your pem file name]    Dikkat
 
 - if we don't want to create a config file, we have another option, using -A flag with the ssh command. `-A` option `enables forwarding of the authentication agent connection`. It means that, it forwards your SSH auth schema to the remote host. So you can use SSH over there as if you were on your local machine.
 
+------------
+Key dosyasını taşımak için;
+user$ cd desktop/key
+eval $(ssh-agent -s)  or  eval "$(ssh-agent)"
+ssh-add -K key.pem
+ssh -A ec2-user@54.234.128.151
+------------
+Farklı yöntem
+
+----------
+HRN@DESKTOP-7K8096H MINGW64 ~/Downloads
+$ scp -i firstkey.pem "ec2-user@54.161.246.232:/home/ec2-user/cs.sh"  ./
+HRN@DESKTOP-7K8096H MINGW64 ~/Downloads
+$ scp -i firstkey.pem "./aa.sh" "ec2-user@54.161.246.232:/home/ec2-user/"
+----------
+
+
 ```bash
 ssh -A ec2-user@ec2-3-88-199-43.compute-1.amazonaws.com
 ```

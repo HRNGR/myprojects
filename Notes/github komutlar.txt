@@ -52,8 +52,6 @@ ssh-add -K key.pem
 ssh -A ec2-user@54.234.128.151
 ------------
 
-
-
 $*** değişken şeklinde algılıyor "..***..." tırnak içinde dahi başına ' $' / gelirse $ aktif olmuyor
 
 ------------
@@ -97,8 +95,6 @@ scp -i FirstKey.pem ec2-user@ec2-54-221-20-193:/home/ec2-use/git.text ./git.txt
 
 scp -i temelcikey.pem -r ./CourseProjects ec2-user@3.88.161.15:/home/ec2-user/
 scp -i temelcikey.pem -r ec2-user@3.88.161.15:/home/ec2-user ./
-
-
 ------------
 Renklendirmek için
 .bashrc dosyasına sonsatıra aşağıdakini ekle (Komuta da yazarsak oluyor ama geçici)
