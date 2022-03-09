@@ -45,6 +45,15 @@ Sağ altta yeşil kısma bas "connect to host" ya da "connect to host with curre
 linux
 continue
 ------------
+Key dosyasını taşımak için;
+user$ cd desktop/key
+eval $(ssh-agent -s)  or  eval "$(ssh-agent)"
+ssh-add -K key.pem
+ssh -A ec2-user@54.234.128.151
+------------
+
+
+
 $*** değişken şeklinde algılıyor "..***..." tırnak içinde dahi başına ' $' / gelirse $ aktif olmuyor
 
 ------------
