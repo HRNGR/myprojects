@@ -91,7 +91,7 @@ s3 = boto3.resource('s3')
 
 # Upload a new file
 data = open('test.txt', 'rb')
-s3.Bucket('xxxxxxxx-boto3-bucket').put_object(Key='test.txt', Body=data)
+s3.Bucket('harun-boto3-bucket').put_object(Key='test.txt', Body=data)
 ```
 - Check the "xxxxxxxxx-boto3-bucket", if your script works fine, you should be able to see your test file in your bucket.
 
@@ -122,7 +122,7 @@ instances = ec2.create_instances(
 ```text
 import boto3
 ec2 = boto3.resource('ec2')
-ec2.Instance('your InstanceID').stop()
+ec2.Instance('i-028d527386c3d8022').stop()
 ```
 
 - Create a file a called ec2terminate.py and put the code below in it to terminate EC2 instance via boto3.
