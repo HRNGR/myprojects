@@ -19,5 +19,4 @@ instances = ec2.create_instances(
         ]
              }
          ]
-     
  )
