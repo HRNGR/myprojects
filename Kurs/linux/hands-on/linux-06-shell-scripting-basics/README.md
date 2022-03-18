@@ -2,18 +2,22 @@
 
 Purpose of the this hands-on training is to teach the students how to script in shell.
 
-#### Learning Outcomes
+## Learning Outcomes
 
 At the end of the this hands-on training, students will be able to;
 
 - explain shell scripting basics.
+
 - explain shell variables.
+
 - do simple arithmetic.
 
 ## Outline
 
 - Part 1 - Shell Scripting Basics
+
 - Part 2 - Shell Variables
+
 - Part 3 - Simple Arithmetic
 
 ## Part 1 - Shell Scripting Basics
@@ -32,10 +36,13 @@ echo "Hello World"
 ```
 
 - Before we add anything else to our script, we need to alert the system that a shell script is being started.
-  This is done specifying `#!/bin/bash` on the first line, meaning that the script should always be run with bash, rather than another shell. `#!` is called a `shebang` because the `#` symbol is called a hash, and the `!` symbol is called a bang.
+This is done specifying `#!/bin/bash` on the first line, meaning that the script should always be run with bash, rather than another shell. `#!` is called a `shebang` because the `#` symbol is called a hash, and the `!` symbol is called a bang.
+
 - After to save the above content, we need to make the script executable.
-vim run
+
+```bash
 chmod +x basic.sh
+```
 
 - Then we can execute the `basic.sh`. To execute basic.sh, it is required to add `./` beginning of the `basic.sh`. `./` means we're calling something in the current working directory. We have to specify the path for executables if they're outside our $PATH variable.
 
@@ -61,7 +68,8 @@ ls
 
 ### Shell Comments
 
-- Bash ignores everything written on the line after the hash mark `(#)`. The only exception to this rule is the first line of the script that starts with the `#!` characters.
+- Bash ignores everything written on the line after the hash mark `(#)`. The only exception to this rule is the first line of the script that starts with the `#!` characters. 
+
 - Comments can be added at the beginning on the line or inline with other code. Let's update `basic.sh`.
 
 ```bash
@@ -77,6 +85,7 @@ pwd # This is an inline comment
 ### HEREDOC syntax
 
 - A heredoc consists of the **<<** `(redirection operator)`, followed by a delimiter token. After the delimiter token, lines of string can be defined to form the content. Finally, the delimiter token is placed at the end to serve as the termination. The delimiter token can be any value as long as it is unique enough that it won’t appear within the content.
+
 - Let's see how to use HereDoc.
 
 ```bash
@@ -118,7 +127,9 @@ multiline-comment
 ## Part 2 - Shell Variables
 
 - A variable is pointer to the actual data. The shell enables us to create, assign, and delete variables.
+
 - The name of a variable can contain only letters (a to z or A to Z), numbers ( 0 to 9) or the underscore character (_) and beginning with a letter or underscore character.
+
 - The following examples are valid variable names.
 
 ```bash
@@ -127,7 +138,7 @@ _VAR=5
 clarus_way=test
 ```
 
-> Note that there is no space on either side of the equals ( = ) sign.
+> Note that there is no space on either side of the equals ( = ) sign. 
 
 - The following examples are invalid.
 
@@ -139,6 +150,7 @@ KEY_1?=value1
 ```
 
 - The reason we cannot use other characters such as `?`, `*`, or `-` is that these characters have a special meaning for the shell.
+
 - Create a new file and name it `variable.sh`.
 
 ```bash
@@ -177,7 +189,7 @@ working_directory=$(pwd)
 echo "Welcome, your working directory is $working_directory."
 ```
 
-- Make the script executable and execute it.
+- Make the script executable and execute it. 
 
 ```bash
 chmod +x command-substitution.sh
@@ -193,7 +205,7 @@ echo "Today is `date`"
 echo "You are `whoami`"
 ```
 
-- And execute it.
+- And execute it. 
 
 ```bash
 ./command-substitution.sh
@@ -201,7 +213,8 @@ echo "You are `whoami`"
 
 ### Console input
 
-- The Bash `read` command is a powerful built-in utility used take user input.
+- The Bash `read` command is a powerful built-in utility used take user input. 
+
 - Update the `variable.sh` file.
 
 ```bash
@@ -231,6 +244,7 @@ echo -e "\nYour password is $PASSWORD"
 ### Command Line Arguments
 
 - Command-line arguments are given after the name of the program in command-line shell of Operating Systems. The command-line arguments $1, $2, $3, ...$9 are positional parameters, with $0 pointing to the actual command, program, shell script, or function and $1, $2, $3, ...$9 as the arguments to the command.
+
 - Create a new file and name it `argument.sh`.
 
 ```bash
@@ -245,7 +259,7 @@ echo "$RANDOM is a random number"
 echo "The current line number is $LINENO"
 ```
 
-- Make the script executable.
+- Make the script executable. 
 
 ```bash
 chmod +x argument.sh
@@ -263,7 +277,7 @@ chmod +x argument.sh
 
 #### Defining arrays
 
-- Following is the simplest method of creating an array variable.
+- Following is the simplest method of creating an array variable. 
 
 ```bash
 DISTROS[0]="ubuntu"
@@ -324,7 +338,8 @@ expr 3-2
 ```
 
 - Let's create a simple calculator. Create a file and name it `calculator.sh`.
-- Make the script executable.
+
+- Make the script executable. 
 
 ```bash
 chmod +x calculator.sh
@@ -345,7 +360,7 @@ echo "DIV="`expr $first_number / $second_number`
 
 ### let
 
-- `let` is a builtin function of Bash that helps us to do simple arithmetic. It is similar to `expr` except instead of printing the answer it saves the result to a variable. Unlike expr we need to enclose the expression in quotes.
+- `let` is a builtin function of Bash that helps us to do simple arithmetic. It is similar to `expr` except instead of printing the answer it saves the result to a variable. Unlike expr we need to enclose the expression in quotes. 
 
 ```bash
 let "sum = 3 + 5"
@@ -393,7 +408,7 @@ echo "The increment of first number is $first_number"
 echo "The decrement of second number is $second_number"
 ```
 
-- Make the script executable and execute it.
+- Make the script executable and execute it. 
 
 ```bash
 chmod +x let-calculator.sh
@@ -416,7 +431,7 @@ echo "Number = $number"
 echo "New number = $new_number"
 ```
 
-- Make the script executable and execute it.
+- Make the script executable and execute it. 
 
 ```bash
 chmod +x number.sh
@@ -464,7 +479,7 @@ echo "The increment of first number is $first_number"
 echo "The decrement of second number is $second_number"
 ```
 
-- Make the script executable and execute it.
+- Make the script executable and execute it. 
 
 ```bash
 chmod +x parantheses-calculator.sh
