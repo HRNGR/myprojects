@@ -117,6 +117,7 @@ Resources:
           </html>" > /var/www/html/index.html
           systemctl start httpd
           systemctl enable httpd
+  
   myTG:
     Type: AWS::ElasticLoadBalancingV2::TargetGroup
     Properties:
@@ -127,7 +128,7 @@ Resources:
       Protocol: HTTP
       UnhealthyThresholdCount: 3
       VpcId: !Ref myVPC
-
+  
   mySG:
     Type: AWS::EC2::SecurityGroup
     Properties:
@@ -142,7 +143,7 @@ Resources:
           ToPort: 80
           CidrIp: 0.0.0.0/0
       VpcId: !Ref myVPC
-  
+
 Outputs:
   AppUrl:
     Description: URL of the ALB
