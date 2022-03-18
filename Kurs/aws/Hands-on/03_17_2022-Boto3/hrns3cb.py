@@ -9,3 +9,4 @@ s3.create_bucket(Bucket='harun-boto3-bucket')
 # Print out all bucket names
 for bucket in s3.buckets.all():
     print(bucket.name)
+# Use Amazon S3
