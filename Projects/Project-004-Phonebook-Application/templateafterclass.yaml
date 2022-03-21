@@ -43,6 +43,21 @@ Resources:
           ToPort: 80
           SourceSecurityGroupId: !GetAtt ALBSecGroup.GroupId
 
+  LogicalID:
+    Type: AWS::Lightsail::LoadBalancer
+    Properties:
+      AttachedInstances:
+        AttachedInstances
+      HealthCheckPath: "String"
+      InstancePort: Number # Required
+      IpAddressType: "String"
+      LoadBalancerName: "String" # Required
+      SessionStickinessEnabled: false
+      SessionStickinessLBCookieDurationSeconds: "String"
+
+  
+
+
   WebServerLT:
     Type: AWS::EC2::LaunchTemplate
     Properties:
@@ -105,6 +120,23 @@ Resources:
       LoadBalancerArn: !Ref ApplicationLoadBalancer
       Port: 80
       Protocol: HTTP
+
+  webserversecgroupkitten:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      SecurityGroupIngress:
+        IpProtocol: tcp
+        FromPort: 80
+        ToPort: 80
+        CidrIp: 0.0.0.0/0
+
+        IpProtocol: tcp
+        FromPort: 22
+        ToPort: 22
+        CidrIp: 172.80.15.3
+      VpcId: !Ref
+
+
 
 
   WebServerASG:
