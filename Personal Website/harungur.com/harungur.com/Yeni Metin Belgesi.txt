@@ -67,3 +67,34 @@
       </div>
     </div>
 </header>
+
+
+
+
+<div class="grid_20">
+  <p>
+  <!--BİŞEY YAPIŞTIRMA-->
+  </p>
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <style>
+                
+            </style>
+            <script src="/scripts/snippet-javascript-console.min.js?v=1"></script>
+          </head>
+          <body>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+              <button onclick="onclickfunction()">Bookmark my page</button>
+                  <script type="text/javascript">
+                    function onclickfunction(){
+                    alert('Press Ctrl + D to bookmark my page');
+                    }
+                  </script>
+          </body>
+        </html>
+        
+  <p>
+  <!--BİŞEY YAPIŞTIRMA-->
+  </p>
+</div>
