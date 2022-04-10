@@ -24,10 +24,10 @@ Resources:
 yum update -y
 pip3 install flask
 mkdir roman-project && cd roman-project
-wget https://raw.githubusercontent.com/MuratYarali/my-projects/main/aws/projects/Project-001-Roman-Numerals-Converter/app.py
+wget https://raw.githubusercontent.com/HRNGR/my-projects/main/aws/projects/Project-001-Roman-Numerals-Converter/app.py
 mkdir templates && cd templates
-wget https://raw.githubusercontent.com/MuratYarali/my-projects/main/aws/projects/Project-001-Roman-Numerals-Converter/templates/index.html
-wget https://raw.githubusercontent.com/MuratYarali/my-projects/main/aws/projects/Project-001-Roman-Numerals-Converter/templates/result.html
+wget https://raw.githubusercontent.com/HRNGR/my-projects/main/aws/projects/Project-001-Roman-Numerals-Converter/templates/index.html
+wget https://raw.githubusercontent.com/HRNGR/my-projects/main/aws/projects/Project-001-Roman-Numerals-Converter/templates/result.html
 cd ..
 python3 app.py
 
