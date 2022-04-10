@@ -5,7 +5,7 @@ Description: |
 Parameters:
   parammyKey:
     Description: Select Your Key
-    Type: AWS::EC2::KeyPair::KeyName
+    Type: AWS::EC2::KeyPair::KeyName #FirstKey
 
 Resources:
   myIns:
