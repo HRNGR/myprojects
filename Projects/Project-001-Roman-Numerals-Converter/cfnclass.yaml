@@ -18,6 +18,7 @@ Resources:
         - !Ref mySG
       UserData: !Base64 |
 #!/bin/bash -ex
+
 yum update -y
 yum install python3 -y
 pip3 install flask
