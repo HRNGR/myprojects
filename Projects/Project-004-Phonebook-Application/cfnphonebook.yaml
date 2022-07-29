@@ -9,8 +9,6 @@ Parameters:
 
 Resources:
 
-
-
 LogicalID:
   Type: AWS::EC2::LaunchTemplate
   Properties:
